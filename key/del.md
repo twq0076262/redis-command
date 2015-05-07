@@ -19,8 +19,7 @@
 **返回值：**
     被删除 ``key`` 的数量。
 
-::
-
+```
     #  删除单个 key
 
     redis> SET name huangz 
@@ -52,3 +51,4 @@
 
     redis> DEL name type website
     (integer) 3
+```

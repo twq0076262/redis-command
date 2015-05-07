@@ -17,12 +17,11 @@
     | 当 ``key`` 存在时，返回有关信息。
     | 当 ``key`` 不存在时，返回一个错误。 
 
-::
-
+```
     redis> DEBUG OBJECT my_pc
     Value at:0xb6838d20 refcount:1 encoding:raw serializedlength:9 lru:283790 lru_seconds_idle:150
 
     redis> DEBUG OBJECT your_mac
     (error) ERR no such key
-
+```
 

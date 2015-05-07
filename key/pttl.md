@@ -18,8 +18,7 @@
 
 .. note:: 在 Redis 2.8 以前，当 ``key`` 不存在，或者 ``key`` 没有设置剩余生存时间时，命令都返回 ``-1`` 。
 
-::
-
+```
     # 不存在的 key
 
     redis> FLUSHDB
@@ -45,3 +44,4 @@
 
     redis> PTTL key
     (integer) 6179
+```

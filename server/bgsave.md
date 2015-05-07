@@ -18,7 +18,7 @@
 **返回值：**
     反馈信息。
 
-::
-
+```
     redis> BGSAVE
     Background saving started
+```

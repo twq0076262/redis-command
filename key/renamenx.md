@@ -17,8 +17,7 @@
     | 修改成功时，返回 ``1`` 。
     | 如果 ``newkey`` 已经存在，返回 ``0`` 。
 
-::
-
+```
     # newkey 不存在，改名成功
 
     redis> SET player "MPlyaer"
@@ -47,3 +46,4 @@
 
     redis> get favorite_animal
     "butterfly"
+```

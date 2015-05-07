@@ -24,8 +24,7 @@
 **返回值：**
     执行 `HINCRBY`_ 命令之后，哈希表 ``key`` 中域 ``field`` 的值。
 
-::
-
+```
     # increment 为正数
 
     redis> HEXISTS counter page_view    # 对空域进行设置
@@ -63,3 +62,4 @@
 
     redis> HGET myhash string                   # 原值不变
     "hello,world"
+```

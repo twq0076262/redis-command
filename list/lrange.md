@@ -30,8 +30,7 @@
 **返回值:**
     一个列表，包含指定区间内的元素。
 
-::
-
+```
     redis> RPUSH fp-language lisp   
     (integer) 1
 
@@ -44,6 +43,6 @@
     redis> LRANGE fp-language 0 1
     1) "lisp"
     2) "scheme"
-
+```
 
 

@@ -19,8 +19,7 @@
     | 当所有 ``key`` 都成功设置，返回 ``1`` 。
     | 如果所有给定 ``key`` 都设置失败(至少有一个 ``key`` 已经存在)，那么返回 ``0`` 。
 
-::
-
+```
     # 对不存在的 key 进行 MSETNX
 
     redis> MSETNX rmdbs "MySQL" nosql "MongoDB" key-value-store "redis"
@@ -42,3 +41,4 @@
 
     redis> GET rmdbs                                # rmdbs 也没有被修改
     "MySQL"
+```

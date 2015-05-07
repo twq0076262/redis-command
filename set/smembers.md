@@ -16,8 +16,7 @@
 **返回值:**
     集合中的所有成员。
 
-::
-
+```
     # key 不存在或集合为空
 
     redis> EXISTS not_exists_key
@@ -36,3 +35,4 @@
     1) "Python"
     2) "Ruby"
     3) "Clojure"
+```

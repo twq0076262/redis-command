@@ -18,8 +18,7 @@
 **返回值：**
     改名成功时提示 ``OK`` ，失败时候返回一个错误。
 
-:: 
-
+```
     # key 存在且 newkey 不存在
 
     redis> SET message "hello world"
@@ -57,3 +56,4 @@
 
     redis:1> GET personal_computer      # 原来的值 dell 被覆盖了
     "lenovo"
+```

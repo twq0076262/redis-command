@@ -22,8 +22,7 @@
     | 列表中下标为 ``index`` 的元素。
     | 如果 ``index`` 参数的值不在列表的区间范围内(out of range)，返回 ``nil`` 。
 
-::
-
+```
     redis> LPUSH mylist "World"
     (integer) 1
 
@@ -38,3 +37,4 @@
 
     redis> LINDEX mylist 3        # index不在 mylist 的区间范围内
     (nil)
+```

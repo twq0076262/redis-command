@@ -14,10 +14,10 @@
 **返回值：**
     ``message`` 自身。
 
-::
-
+```
     redis> ECHO "Hello Moto"
     "Hello Moto"
 
     redis> ECHO "Goodbye Moto"
     "Goodbye Moto"
+```

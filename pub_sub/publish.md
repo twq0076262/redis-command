@@ -14,8 +14,7 @@
 **返回值：**
     接收到信息 ``message`` 的订阅者数量。
 
-::
-
+```
     # 对没有订阅者的频道发送信息
 
     redis> publish bad_channel "can any body hear me?"
@@ -32,3 +31,4 @@
 
     redis> publish chat_room "hello~ everyone"
     (integer) 3
+```

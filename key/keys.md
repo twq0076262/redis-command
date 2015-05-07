@@ -24,8 +24,7 @@
 **返回值：**
     符合给定模式的 ``key`` 列表。
 
-::
-
+```
     redis> MSET one 1 two 2 three 3 four 4  # 一次设置 4 个 key
     OK
 
@@ -45,3 +44,4 @@
     2) "three"
     3) "two"
     4) "one"
+```

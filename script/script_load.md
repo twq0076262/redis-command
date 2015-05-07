@@ -24,10 +24,10 @@
 **返回值：**
     给定 ``script`` 的 SHA1 校验和
 
-::
-
+```
     redis> SCRIPT LOAD "return 'hello moto'"
     "232fd51614574cf0867b83d384a5e898cfd24e5a"
 
     redis> EVALSHA 232fd51614574cf0867b83d384a5e898cfd24e5a 0
     "hello moto"
+```

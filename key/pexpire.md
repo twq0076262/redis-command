@@ -15,8 +15,7 @@
     | 设置成功，返回 ``1`` 
     | ``key`` 不存在或设置失败，返回 ``0`` 
 
-::
-
+```
     redis> SET mykey "Hello"
     OK
 
@@ -28,3 +27,4 @@
 
     redis> PTTL mykey   # PTTL 可以给出准确的毫秒数
     (integer) 1499
+```

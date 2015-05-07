@@ -16,8 +16,7 @@
 **返回值：**
     总是返回 ``OK`` 。
 
-::
-
+```
     redis> DBSIZE    # 清空前的 key 数量
     (integer) 4
 
@@ -26,3 +25,4 @@
 
     redis> DBSIZE    # 清空后的 key 数量
     (integer) 0
+```

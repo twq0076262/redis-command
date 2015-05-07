@@ -12,8 +12,7 @@
     | 哈希表中域的数量。
     | 当 ``key`` 不存在时，返回 ``0`` 。
 
-::
-
+```
     redis> HSET db redis redis.com
     (integer) 1
 
@@ -28,3 +27,4 @@
 
     redis> HLEN db
     (integer) 3
+```

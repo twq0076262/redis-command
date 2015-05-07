@@ -16,8 +16,7 @@
 **返回值：**
     总是返回 ``OK`` 。
 
-::
-
+```
     redis> DBSIZE            # 0 号数据库的 key 数量
     (integer) 9
 
@@ -38,3 +37,4 @@
 
     redis> DBSIZE
     (integer) 0
+```

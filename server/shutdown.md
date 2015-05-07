@@ -31,8 +31,7 @@
     | 执行失败时返回错误。
     | 执行成功时不返回任何信息，服务器和客户端的连接断开，客户端自动退出。
 
-::
-
+```
     redis> PING
     PONG
 
@@ -43,3 +42,4 @@
     $ redis
     Could not connect to Redis at: Connection refused
     not connected> 
+```

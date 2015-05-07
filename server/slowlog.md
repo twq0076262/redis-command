@@ -33,8 +33,7 @@ Slow log 的行为由两个配置参数(configuration parameter)指定，可以�
 
 使用 ``CONFIG GET`` 命令可以查询两个选项的当前值：
 
-::
-
+```
     redis> CONFIG GET slowlog-log-slower-than
     1) "slowlog-log-slower-than"
     2) "1000"
@@ -42,6 +41,7 @@ Slow log 的行为由两个配置参数(configuration parameter)指定，可以�
     redis> CONFIG GET slowlog-max-len
     1) "slowlog-max-len"
     2) "1000"
+```
 
 **查看 slow log**
 
@@ -49,8 +49,7 @@ Slow log 的行为由两个配置参数(configuration parameter)指定，可以�
 
 最新的日志会最先被打印：
 
-::
-
+```
     # 为测试需要，将 slowlog-log-slower-than 设成了 10 微秒
 
     redis> SLOWLOG GET
@@ -76,6 +75,7 @@ Slow log 的行为由两个配置参数(configuration parameter)指定，可以�
           3) "slowlog-log-slower-than"
 
     # ...
+```
 
 日志的唯一 id 只有在 Redis 服务器重启的时候才会重置，这样可以避免对日志的重复处理(比如你可能会想在每次发现新的慢查询时发邮件通知你)。
 
@@ -85,17 +85,16 @@ Slow log 的行为由两个配置参数(configuration parameter)指定，可以�
 
 请注意这个值和 ``slower-max-len`` 的区别，它们一个是当前日志的数量，一个是允许记录的最大日志的数量。
 
-::
-
+```
     redis> SLOWLOG LEN
     (integer) 14
+```
 
 **清空日志**
 
 使用命令 ``SLOWLOG RESET`` 可以清空 slow log 。
 
-::
-
+```
     redis> SLOWLOG LEN
     (integer) 14
 
@@ -104,6 +103,7 @@ Slow log 的行为由两个配置参数(configuration parameter)指定，可以�
 
     redis> SLOWLOG LEN
     (integer) 0
+```
 
 **可用版本：**
     >= 2.2.12

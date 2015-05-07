@@ -28,8 +28,7 @@
 **返回值:**
     保存到 ``destination`` 的结果集的基数。
 
-::
-
+```
     redis> ZRANGE programmer 0 -1 WITHSCORES
     1) "peter"
     2) "2000"
@@ -62,3 +61,4 @@
     10) "10500"
     11) "bob"
     12) "12000"
+```

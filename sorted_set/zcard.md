@@ -15,8 +15,7 @@
     | 当 ``key`` 存在且是有序集类型时，返回有序集的基数。
     | 当 ``key`` 不存在时，返回 ``0`` 。
 
-::
-
+```
     redis > ZADD salary 2000 tom    # 添加一个成员
     (integer) 1
 
@@ -34,3 +33,4 @@
 
     redis > ZCARD non_exists_key
     (integer) 0
+```

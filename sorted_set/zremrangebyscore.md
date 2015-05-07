@@ -16,8 +16,7 @@
 **返回值:**
     被移除成员的数量。
 
-::
-    
+```
     redis> ZRANGE salary 0 -1 WITHSCORES          # 显示有序集内所有成员及其 score 值
     1) "tom"
     2) "2000"
@@ -32,6 +31,6 @@
     redis> ZRANGE salary 0 -1 WITHSCORES          # 剩下的有序集成员
     1) "jack"
     2) "5000"
-
+```
 
 

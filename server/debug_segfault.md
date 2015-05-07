@@ -14,11 +14,10 @@
 **返回值：**
     无
 
-::
-
+```
     redis> DEBUG SEGFAULT
     Could not connect to Redis at: Connection refused
 
     not connected> 
-
+```
 

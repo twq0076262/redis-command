@@ -18,8 +18,7 @@
 **返回值：**
     列表 ``key`` 的长度。
 
-::
-    
+```
     # 空列表
 
     redis> LLEN job 
@@ -36,3 +35,4 @@
 
     redis> LLEN job
     (integer) 2
+```

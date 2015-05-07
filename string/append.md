@@ -16,8 +16,7 @@
 **返回值：**
     追加 ``value`` 之后， ``key`` 中字符串的长度。
 
-::
-
+```
     # 对不存在的 key 执行 APPEND
 
     redis> EXISTS myphone               # 确保 myphone 不存在
@@ -34,18 +33,18 @@
 
     redis> GET myphone 
     "nokia - 1110"
+```
 
-模式：时间序列(Time series)
-------------------------------
+## 模式：时间序列(Time series)
 
 `APPEND`_ 可以为一系列定长(fixed-size)数据(sample)提供一种紧凑的表示方式，通常称之为时间序列。
 
 每当一个新数据到达的时候，执行以下命令：
 
-::
-
+```
     APPEND timeseries "fixed-size sample"
-    
+```
+
 然后可以通过以下的方式访问时间序列的各项属性：
 
 - :ref:`STRLEN` 给出时间序列中数据的数量
@@ -58,8 +57,7 @@
 
 下面是一个时间序列的例子：
 
-::
-
+```
     redis> APPEND ts "0043"
     (integer) 4
 
@@ -71,3 +69,4 @@
 
     redis> GETRANGE ts 4 7
     "0035"
+```

@@ -30,8 +30,7 @@
 **返回值:**
     指定区间内，带有 ``score`` 值(可选)的有序集成员的列表。
 
-:: 
-
+```
    redis > ZRANGE salary 0 -1 WITHSCORES             # 显示整个有序集成员
    1) "jack"
    2) "3500"
@@ -56,3 +55,4 @@
 
    redis > ZRANGE salary 200000 3000000 WITHSCORES   # 测试当给定区间不存在于有序集时的情况 
    (empty list or set)
+```

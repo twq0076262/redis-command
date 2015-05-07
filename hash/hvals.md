@@ -15,8 +15,7 @@
     | 一个包含哈希表中所有值的表。
     | 当 ``key`` 不存在时，返回一个空表。
 
-::
-
+```
     # 非空哈希表
 
     redis> HMSET website google www.google.com yahoo www.yahoo.com 
@@ -34,3 +33,4 @@
 
     redis> HVALS not_exists
     (empty list or set)
+```

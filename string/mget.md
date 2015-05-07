@@ -16,8 +16,7 @@
 **返回值：**
     一个包含所有给定 ``key`` 的值的列表。
 
-::
-
+```
     redis> SET redis redis.com
     OK
 
@@ -32,3 +31,4 @@
     1) "redis.com"
     2) "mongodb.org"
     3) (nil)
+```

@@ -17,8 +17,7 @@
     | 以列表形式返回哈希表的域和域的值。
     | 若 ``key`` 不存在，返回空列表。
 
-::
-
+```
     redis> HSET people jack "Jack Sparrow"
     (integer) 1
 
@@ -30,3 +29,4 @@
     2) "Jack Sparrow"  # 值
     3) "gump"
     4) "Forrest Gump"
+```

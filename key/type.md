@@ -19,8 +19,8 @@
     |  ``zset`` (有序集)
     |  ``hash`` (哈希表)
 
-::
-    
+
+```
     # 字符串
 
     redis> SET weather "sunny"
@@ -46,3 +46,4 @@
 
     redis> TYPE pat
     set
+```

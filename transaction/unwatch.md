@@ -18,10 +18,10 @@
 **返回值：**
     总是 ``OK`` 。
 
-::
-
+```
     redis> WATCH lock lock_times
     OK
 
     redis> UNWATCH
     OK
+```

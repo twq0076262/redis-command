@@ -17,8 +17,7 @@
     | 被移除的随机元素。
     | 当 ``key`` 不存在或 ``key`` 是空集时，返回 ``nil`` 。
 
-::
-
+```
     redis> SMEMBERS db
     1) "MySQL"
     2) "MongoDB"
@@ -36,3 +35,4 @@
 
     redis> SMEMBERS db
     1) "MongoDB"
+```

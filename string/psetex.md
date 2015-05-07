@@ -14,8 +14,7 @@
 **返回值：**
     设置成功时返回 ``OK`` 。
 
-::
-
+```
     redis> PSETEX mykey 1000 "Hello"
     OK
 
@@ -24,3 +23,4 @@
 
     redis> GET mykey
     "Hello"
+```

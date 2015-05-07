@@ -22,8 +22,7 @@
 **返回值：**
     减去 ``decrement`` 之后， ``key`` 的值。
 
-::
-
+```
     # 对已存在的 key 进行 DECRBY
 
     redis> SET count 100
@@ -40,3 +39,4 @@
 
     redis> DECRBY pages 10  
     (integer) -10
+```

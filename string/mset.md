@@ -18,8 +18,7 @@
 **返回值：**
     总是返回 ``OK`` (因为 ``MSET`` 不可能失败)
 
-::
-
+```
     redis> MSET date "2012.3.30" time "11:00 a.m." weather "sunny"
     OK
 
@@ -39,3 +38,4 @@
 
     redis> GET google
     "google.com"
+```

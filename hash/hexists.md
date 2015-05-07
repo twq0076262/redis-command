@@ -15,8 +15,7 @@
     | 如果哈希表含有给定域，返回 ``1`` 。
     | 如果哈希表不含有给定域，或 ``key`` 不存在，返回 ``0`` 。
 
-::
-
+```
     redis> HEXISTS phone myphone
     (integer) 0
 
@@ -25,3 +24,4 @@
 
     redis> HEXISTS phone myphone
     (integer) 1
+```

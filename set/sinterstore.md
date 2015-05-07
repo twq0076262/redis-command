@@ -18,8 +18,7 @@
 **返回值:**
     结果集中的成员数量。
 
-::
-
+```
     redis> SMEMBERS songs
     1) "good bye joe"
     2) "hello,peter"
@@ -33,3 +32,4 @@
 
     redis> SMEMBERS song_interset
     1) "good bye joe"
+```

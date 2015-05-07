@@ -19,8 +19,7 @@
     | 如果连接没有设置名字，那么返回空白回复；
     | 如果有设置名字，那么返回名字。
 
-::
-
+```
     # 新连接默认没有名字
 
     redis 127.0.0.1:6379> CLIENT GETNAME
@@ -35,3 +34,4 @@
 
     redis 127.0.0.1:6379> CLIENT GETNAME
     "hello-world-connection"
+```

@@ -18,8 +18,7 @@
 **返回值：**
     移动成功返回 ``1`` ，失败则返回 ``0`` 。
 
-::
-
+```
     # key 存在于当前数据库
 
     redis> SELECT 0                             # redis默认使用数据库 0，为了清晰起见，这里再显式指定一次。
@@ -82,3 +81,4 @@
 
     redis:1> GET favorite_fruit                 # 数据库 1 的 favorite_fruit 也是
     "apple"
+```

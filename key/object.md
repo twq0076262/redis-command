@@ -34,8 +34,7 @@ OBJECT 命令有多个子命令：
     |  ``REFCOUNT`` 和 ``IDLETIME`` 返回数字。
     |  ``ENCODING`` 返回相应的编码类型。
 
-::
-
+```
     redis> SET game "COD"           # 设置一个字符串
     OK
     
@@ -65,4 +64,4 @@ OBJECT 命令有多个子命令：
 
     redis> OBJECT ENCODING small-number
     "int"
-
+```

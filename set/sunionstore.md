@@ -18,8 +18,7 @@
 **返回值:**
     结果集中的元素数量。
 
-::
-
+```
     redis> SMEMBERS NoSQL
     1) "MongoDB"
     2) "Redis"
@@ -36,3 +35,4 @@
     2) "sqlite"
     3) "MongoDB"
     4) "Redis"
+```

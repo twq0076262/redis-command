@@ -18,8 +18,7 @@
 **返回值:**
     被成功移除的元素的数量，不包括被忽略的元素。
 
-::
-
+```
     # 测试数据
 
     redis> SMEMBERS languages
@@ -48,3 +47,4 @@
 
     redis> SMEMBERS languages
     (empty list or set)
+```

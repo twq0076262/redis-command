@@ -19,8 +19,7 @@
     | 如果 ``member`` 是有序集 ``key`` 的成员，返回 ``member`` 的排名。
     | 如果 ``member`` 不是有序集 ``key`` 的成员，返回 ``nil`` 。
 
-::
-
+```
     redis> ZRANGE salary 0 -1 WITHSCORES        # 显示所有成员及其 score 值
     1) "peter"
     2) "3500"
@@ -31,3 +30,4 @@
 
     redis> ZRANK salary tom                     # 显示 tom 的薪水排名，第二
     (integer) 1
+```

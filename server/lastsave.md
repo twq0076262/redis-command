@@ -14,9 +14,8 @@
 **返回值：**
     一个 UNIX 时间戳。
 
-::
-
+```
     redis> LASTSAVE
     (integer) 1324043588
-
+```
 

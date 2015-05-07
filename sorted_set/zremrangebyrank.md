@@ -19,8 +19,7 @@
 **返回值:**
     被移除成员的数量。
 
-::
-
+```
     redis> ZADD salary 2000 jack
     (integer) 1
     redis> ZADD salary 5000 tom
@@ -34,3 +33,4 @@
     redis> ZRANGE salary 0 -1 WITHSCORES    # 有序集只剩下一个成员
     1) "tom"
     2) "5000"
+```

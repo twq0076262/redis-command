@@ -15,8 +15,7 @@
     | 当生存时间移除成功时，返回 ``1`` .
     | 如果 ``key`` 不存在或 ``key`` 没有设置生存时间，返回 ``0`` 。
 
-::
-
+```
     redis> SET mykey "Hello"
     OK
 
@@ -31,3 +30,4 @@
 
     redis> TTL mykey
     (integer) -1
+```

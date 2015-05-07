@@ -16,8 +16,7 @@
 **返回值：**
     总是返回 ``OK`` 。
 
-::
-
+```
     redis> MULTI
     OK
 
@@ -29,3 +28,4 @@
 
     redis> DISCARD
     OK
+```

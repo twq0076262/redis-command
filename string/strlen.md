@@ -17,8 +17,7 @@
     | 字符串值的长度。
     | 当  ``key`` 不存在时，返回 ``0`` 。
 
-::
-
+```
     # 获取字符串的长度
 
     redis> SET mykey "Hello world"
@@ -32,3 +31,4 @@
 
     redis> STRLEN nonexisting
     (integer) 0
+```

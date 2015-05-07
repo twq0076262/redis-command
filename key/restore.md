@@ -30,8 +30,7 @@
 **返回值：**
     | 如果反序列化成功那么返回 ``OK`` ，否则返回一个错误。
 
-::
-
+```
     # 创建一个键，作为 DUMP 命令的输入
 
     redis> SET greeting "hello, dumping world!"
@@ -63,3 +62,4 @@
     redis> RESTORE fake-message 0 "hello moto moto blah blah"
     (error) ERR DUMP payload version or checksum are wrong
 
+```

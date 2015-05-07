@@ -18,8 +18,7 @@
 **返回值:**
     指定区间内，带有 ``score`` 值(可选)的有序集成员的列表。
 
-::
-
+```
     redis > ZADD salary 10086 jack
     (integer) 1
     redis > ZADD salary 5000 tom
@@ -39,3 +38,4 @@
     1) "peter"
     2) "tom"
     3) "joe"
+```

@@ -17,8 +17,7 @@
     | 如果生存时间设置成功，返回 ``1`` 。
     | 当 ``key`` 不存在或没办法设置生存时间，返回 ``0`` 。
 
-::
-
+```
     redis> SET cache www.google.com
     OK
 
@@ -27,3 +26,4 @@
 
     redis> TTL cache
     (integer) 45081860
+```

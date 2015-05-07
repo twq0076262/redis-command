@@ -24,8 +24,7 @@
 **返回值：**
     指定偏移量原来储存的位。
 
-::
-
+```
     redis> SETBIT bit 10086 1
     (integer) 0
 
@@ -34,3 +33,4 @@
 
     redis> GETBIT bit 100   # bit 默认被初始化为 0 
     (integer) 0
+```

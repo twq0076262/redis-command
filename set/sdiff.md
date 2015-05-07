@@ -16,8 +16,7 @@
 **返回值:**
     一个包含差集成员的列表。
 
-::
-
+```
     redis> SMEMBERS peter's_movies
     1) "bet man"
     2) "start war"
@@ -31,3 +30,4 @@
     redis> SDIFF peter's_movies joe's_movies
     1) "bet man"
     2) "start war"
+```

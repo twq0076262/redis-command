@@ -22,8 +22,7 @@
 **返回值：**
     加上 ``increment`` 之后， ``key`` 的值。
 
-::
-    
+```
     # key 存在且是数字值
 
     redis> SET rank 50 
@@ -55,3 +54,4 @@
 
     redis> INCRBY book 200
     (error) ERR value is not an integer or out of range
+```

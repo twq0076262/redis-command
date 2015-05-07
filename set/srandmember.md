@@ -24,8 +24,7 @@
     | 只提供 ``key`` 参数时，返回一个元素；如果集合为空，返回 ``nil`` 。
     | 如果提供了 ``count`` 参数，那么返回一个数组；如果集合为空，返回空数组。
 
-::
-
+```
     # 添加元素
 
     redis> SADD fruit apple banana cherry
@@ -96,3 +95,4 @@
 
     redis> SRANDMEMBER not-eixsts 10
     (empty list or set)
+```

@@ -19,8 +19,7 @@
     | 如果命令执行成功，返回 ``OK`` 。
     | 当 ``key`` 不是哈希表(hash)类型时，返回一个错误。
 
-::
-
+```
     redis> HMSET website google www.google.com yahoo www.yahoo.com 
     OK
 
@@ -29,3 +28,4 @@
 
     redis> HGET website yahoo
     "www.yahoo.com"
+```

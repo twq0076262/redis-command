@@ -15,8 +15,7 @@
     | 当数据库不为空时，返回一个 ``key`` 。
     | 当数据库为空时，返回 ``nil`` 。
 
-:: 
-
+```
     # 数据库不为空
 
     redis> MSET fruit "apple" drink "beer" food "cookies"   # 设置多个 key
@@ -41,3 +40,4 @@
 
     redis> RANDOMKEY
     (nil)
+```

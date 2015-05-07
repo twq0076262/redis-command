@@ -22,8 +22,7 @@
 **返回值：**
     执行 `DECR`_ 命令之后 ``key`` 的值。
 
-::
-
+```
     # 对存在的数字值 key 进行 DECR
 
     redis> SET failure_times 10
@@ -49,3 +48,4 @@
 
     redis> DECR company
     (error) ERR value is not an integer or out of range
+```

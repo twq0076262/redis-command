@@ -19,10 +19,10 @@
     | 设置成功，返回 ``1`` 。
     | 如果给定域已经存在且没有操作被执行，返回 ``0`` 。
 
-::
-
+```
     redis> HSETNX nosql key-value-store redis
     (integer) 1
 
     redis> HSETNX nosql key-value-store redis       # 操作无效，域 key-value-store 已存在
     (integer) 0
+```

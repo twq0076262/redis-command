@@ -15,8 +15,7 @@
     | 列表的头元素。
     | 当 ``key`` 不存在时，返回 ``nil`` 。
 
-::
-
+```
     redis> LLEN course
     (integer) 0
 
@@ -28,3 +27,4 @@
 
     redis> LPOP course  # 移除头元素
     "algorithm001"
+```

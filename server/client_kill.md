@@ -20,8 +20,7 @@
 **返回值**
     当指定的客户端存在，且被成功关闭时，返回 ``OK`` 。
 
-::
-
+```
     # 列出所有已连接客户端
 
     redis 127.0.0.1:6379> CLIENT LIST
@@ -37,3 +36,4 @@
 
     redis 127.0.0.1:6379> CLIENT LIST
     addr=127.0.0.1:43504 fd=5 age=0 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=client
+```

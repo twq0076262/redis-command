@@ -16,8 +16,7 @@
 **返回值：**
     如果连接正常就返回一个 ``PONG`` ，否则返回一个连接错误。
 
-::
-
+```
     # 客户端和服务器连接正常
 
     redis> PING     
@@ -27,3 +26,4 @@
 
     redis 127.0.0.1:6379> PING
     Could not connect to Redis at 127.0.0.1:6379: Connection refused
+```

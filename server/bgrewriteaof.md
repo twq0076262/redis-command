@@ -26,7 +26,7 @@
 **返回值：**
     反馈信息。
 
-::
-    
+```
     redis> BGREWRITEAOF
     Background append only file rewriting started
+```

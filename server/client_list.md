@@ -5,13 +5,12 @@
 
 以人类可读的格式，返回所有连接到服务器的客户端信息和统计数据。
 
-::
-
+```
     redis> CLIENT LIST
     addr=127.0.0.1:43143 fd=6 age=183 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=32768 obl=0 oll=0 omem=0 events=r cmd=client
     addr=127.0.0.1:43163 fd=5 age=35 idle=15 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=ping
     addr=127.0.0.1:43167 fd=7 age=24 idle=6 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=0 qbuf-free=0 obl=0 oll=0 omem=0 events=r cmd=get
-
+```
 
 **可用版本**
     >= 2.4.0
@@ -63,6 +62,5 @@
     * ``r`` : 客户端套接字（在事件 loop 中）是可读的（readable）
     * ``w`` : 客户端套接字（在事件 loop 中）是可写的（writeable）
 
-.. note:: 
     
-    为了 debug 的需要，经常会对域进行添加和删除，一个安全的 Redis 客户端应该可以对 ``CLIENT LIST`` 的输出进行相应的处理（parse），比如忽略不存在的域，跳过未知域，诸如此类。
+为了 debug 的需要，经常会对域进行添加和删除，一个安全的 Redis 客户端应该可以对 ``CLIENT LIST`` 的输出进行相应的处理（parse），比如忽略不存在的域，跳过未知域，诸如此类。

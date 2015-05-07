@@ -22,8 +22,7 @@
 **返回值：**
     当设置成功时返回 ``OK`` ，否则返回一个错误。
 
-::
-
+```
     redis> CONFIG GET slowlog-max-len
     1) "slowlog-max-len"
     2) "1024"
@@ -34,5 +33,5 @@
     redis> CONFIG GET slowlog-max-len
     1) "slowlog-max-len"
     2) "10086"
-
+```
 

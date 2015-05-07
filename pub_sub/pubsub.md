@@ -28,8 +28,7 @@ PUBSUB CHANNELS [pattern]
 
 **返回值：** 一个由活跃频道组成的列表。
 
-::
-
+```
     # client-1 订阅 news.it 和 news.sport 两个频道
 
     client-1> SUBSCRIBE news.it news.sport 
@@ -66,7 +65,7 @@ PUBSUB CHANNELS [pattern]
     redis> PUBSUB CHANNELS news.i*
     1) "news.internet"
     2) "news.it"
-
+```
 
 PUBSUB NUMSUB [channel-1 ... channel-N]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,8 +83,7 @@ PUBSUB NUMSUB [channel-1 ... channel-N]
 在这种情况下，
 命令只返回一个空列表。
 
-::
-
+```
     # client-1 订阅 news.it 和 news.sport 两个频道
 
     client-1> SUBSCRIBE news.it news.sport 
@@ -119,7 +117,7 @@ PUBSUB NUMSUB [channel-1 ... channel-N]
     6) "1"
     7) "news.music" # 没有任何订阅者
     8) "0"
-    
+```
 
 PUBSUB NUMPAT
 ^^^^^^^^^^^^^^^^^
@@ -134,8 +132,7 @@ PUBSUB NUMPAT
 
 **返回值：** 一个整数回复（Integer reply）。
 
-::
-
+```
     # client-1 订阅 news.* 和 discount.* 两个模式
 
     client-1> PSUBSCRIBE news.* discount.*
@@ -173,3 +170,4 @@ PUBSUB NUMPAT
 
     client-3> PUBSUB NUMPAT
     (integer) 4
+```

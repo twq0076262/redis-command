@@ -23,12 +23,11 @@
 **返回值：**
     总是返回 ``OK`` 。
 
-::
-
+```
     redis> SLAVEOF 127.0.0.1 6379
     OK
 
     redis> SLAVEOF NO ONE
     OK
-
+```
 

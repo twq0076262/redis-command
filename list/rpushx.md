@@ -16,8 +16,7 @@
 **返回值：**
      `RPUSHX`_ 命令执行之后，表的长度。
 
-::
-
+```
     # key不存在
 
     redis> LLEN greet
@@ -38,3 +37,4 @@
     redis> LRANGE greet 0 -1
     1) "hi"
     2) "hello"
+```

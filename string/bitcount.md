@@ -21,8 +21,7 @@
 **返回值：**
     被设置为 ``1`` 的位的数量。
 
-::
-
+```
     redis> BITCOUNT bits
     (integer) 0
 
@@ -37,10 +36,9 @@
 
     redis> BITCOUNT bits
     (integer) 2
+```
 
-
-模式：使用 bitmap 实现用户上线次数统计
--------------------------------------------
+## 模式：使用 bitmap 实现用户上线次数统计
 
 Bitmap 对于一些特定类型的计算非常有效。
 
@@ -55,8 +53,7 @@ Bitmap 对于一些特定类型的计算非常有效。
 更详细的实现可以参考博文(墙外) `Fast, easy, realtime metrics using Redis bitmaps <http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/>`_ 。
 
 
-性能
---------
+## 性能
 
 前面的上线次数统计例子，即使运行 10 年，占用的空间也只是每个用户 10*365 比特位(bit)，也即是每个用户 456 字节。对于这种大小的数据来说， :ref:`BITCOUNT` 的处理速度就像 :ref:`GET` 和 :ref:`INCR` 这种 O(1) 复杂度的操作一样快。
 

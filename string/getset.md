@@ -17,8 +17,7 @@
     | 返回给定 ``key`` 的旧值。
     | 当 ``key`` 没有旧值时，也即是， ``key`` 不存在时，返回 ``nil`` 。
 
-::
-
+```
     redis> GETSET db mongodb    # 没有旧值，返回 nil
     (nil)
 
@@ -30,9 +29,9 @@
 
     redis> GET db
     "redis"
+```
 
-模式
---------
+## 模式
 
 `GETSET`_ 可以和 :ref:`INCR` 组合使用，实现一个有原子性(atomic)复位操作的计数器(counter)。
 
@@ -40,8 +39,7 @@
 
 可以用命令 ``GETSET mycounter 0`` 来实现这一目标。
 
-::
-    
+```
     redis> INCR mycount 
     (integer) 11
 
@@ -50,3 +48,4 @@
 
     redis> GET mycount       # 计数器被重置
     "0"
+```

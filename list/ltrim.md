@@ -15,10 +15,10 @@
 
 `LTRIM`_ 命令通常和 :ref:`LPUSH` 命令或 :ref:`RPUSH` 命令配合使用，举个例子：
 
-::
-
+```
     LPUSH log newest_log
     LTRIM log 0 99
+```
 
 这个例子模拟了一个日志程序，每次将最新日志 ``newest_log`` 放到 ``log`` 列表中，并且只保留最新的 ``100`` 项。注意当这样使用 ``LTRIM`` 命令时，时间复杂度是O(1)，因为平均情况下，每次只有一个元素被移除。
 
@@ -43,8 +43,7 @@
 **返回值:**
     | 命令执行成功时，返回 ``ok`` 。
 
-::
-
+```
     # 情况 1： 常见情况， start 和 stop 都在列表的索引范围之内
 
     redis> LRANGE alpha 0 -1       # alpha 是一个包含 5 个字符串的列表
@@ -102,3 +101,4 @@
 
     redis> LRANGE new-alpha 0 -1           # 同样被清空
     (empty list or set)
+```

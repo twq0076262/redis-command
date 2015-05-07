@@ -22,8 +22,7 @@
     | 如果没有找到 ``pivot`` ，返回 ``-1`` 。
     | 如果 ``key`` 不存在或为空列表，返回 ``0`` 。
 
-::
-
+```
     redis> RPUSH mylist "Hello"
     (integer) 1
 
@@ -52,3 +51,4 @@
 
     redis> LINSERT fake_list BEFORE "nono" "gogogog"
     (integer) 0                                      # 失败
+```

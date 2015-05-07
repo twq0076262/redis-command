@@ -16,8 +16,7 @@
 **返回值：**
     字符串值指定偏移量上的位(bit)。
 
-::
-    
+```
     # 对不存在的 key 或者不存在的 offset 进行 GETBIT， 返回 0
 
     redis> EXISTS bit
@@ -34,3 +33,4 @@
 
     redis> GETBIT bit 10086
     (integer) 1
+```

@@ -16,8 +16,7 @@
 **返回值：**
     接收到的信息(请参见下面的代码说明)。
 
-::
-
+```
     # 订阅 news.* 和 tweet.* 两个模式
 
     # 第 1 - 6 行是执行 psubscribe 之后的反馈信息
@@ -54,3 +53,4 @@
     2) "news.*"
     3) "news.life"
     4) "An apple a day, keep doctors away"
+```

@@ -22,8 +22,7 @@
 **返回值：**
     截取得出的子字符串。
 
-::
-
+```
     redis> SET greeting "hello, my friend"
     OK
 
@@ -41,3 +40,4 @@
 
     redis> GETRANGE greeting 0 1008611    # 值域范围不超过实际字符串，超过部分自动被符略
     "hello, my friend"
+```

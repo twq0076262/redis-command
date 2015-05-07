@@ -27,8 +27,7 @@
     | 如果 ``key`` 不存在，那么返回 ``nil`` 。
     | 否则，返回序列化之后的值。
 
-::
-
+```
     redis> SET greeting "hello, dumping world!"
     OK
 
@@ -37,3 +36,4 @@
 
     redis> DUMP not-exists-key
     (nil)
+```

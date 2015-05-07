@@ -23,8 +23,7 @@
 **返回值：**
     执行 `INCR`_ 命令之后 ``key`` 的值。
 
-::
-    
+```
     redis> SET page_view 20
     OK
 
@@ -33,9 +32,9 @@
 
     redis> GET page_view    # 数字值在 Redis 中以字符串的形式保存
     "21"
+```
 
-模式：计数器
----------------
+## 模式：计数器
 
 计数器是 Redis 的原子性自增操作可实现的最直观的模式了，它的想法相当简单：每当某个操作发生时，向 Redis 发送一个 `INCR`_ 命令。
 
@@ -49,15 +48,13 @@
 - 客户端可以通过使用 :ref:`GETSET` 命令原子性地获取计数器的当前值并将计数器清零，更多信息请参考 :ref:`GETSET` 命令。
 - 使用其他自增/自减操作，比如 :ref:`DECR` 和 :ref:`INCRBY` ，用户可以通过执行不同的操作增加或减少计数器的值，比如在游戏中的记分器就可能用到这些命令。
 
-模式：限速器
--------------
+## 模式：限速器
 
 限速器是特殊化的计算器，它用于限制一个操作可以被执行的速率(rate)。
 
 限速器的典型用法是限制公开 API 的请求次数，以下是一个限速器实现示例，它将 API 的最大请求数限制在每个 IP 地址每秒钟十个之内：
 
-::
-
+```
     FUNCTION LIMIT_API_CALL(ip)
     ts = CURRENT_UNIX_TIME()
     keyname = ip+":"+ts
@@ -77,6 +74,7 @@
     END
 
     PERFORM_API_CALL()
+```
 
 这个实现每秒钟为每个 IP 地址使用一个不同的计数器，并用 :ref:`EXPIRE` 命令设置生存时间(这样 Redis 就会负责自动删除过期的计数器)。
 
@@ -84,8 +82,7 @@
 
 以下是另一个限速器实现：
 
-::
-
+```
     FUNCTION LIMIT_API_CALL(ip):
     current = GET(ip)
     IF current != NULL AND current > 10 THEN
@@ -97,6 +94,7 @@
         END
         PERFORM_API_CALL()
     END
+```
 
 这个限速器只使用单个计数器，它的生存时间为一秒钟，如果在一秒钟内，这个计数器的值大于 ``10`` 的话，那么访问就会被禁止。
 
@@ -104,13 +102,13 @@
 
 要消灭这个实现中的竞争条件，我们可以将它转化为一个 Lua 脚本，并放到 Redis 中运行(这个方法仅限于 Redis 2.6 及以上的版本)：
 
-::
-    
+```
     local current
     current = redis.call("incr",KEYS[1])
     if tonumber(current) == 1 then
         redis.call("expire",KEYS[1],1)
     end
+```
 
 通过将计数器作为脚本放到 Redis 上运行，我们保证了 :ref:`INCR` 和 :ref:`EXPIRE` 两个操作的原子性，现在这个脚本实现不会引入竞争条件，它可以运作的很好。
 
@@ -118,8 +116,7 @@
 
 还有另一种消灭竞争条件的方法，就是使用 Redis 的列表结构来代替 :ref:`INCR` 命令，这个方法无须脚本支持，因此它在 Redis 2.6 以下的版本也可以运行得很好：
 
-::
-
+```
     FUNCTION LIMIT_API_CALL(ip)
     current = LLEN(ip)
     IF current > 10 THEN
@@ -135,5 +132,6 @@
         END
         PERFORM_API_CALL()
     END
+```
 
 新的限速器使用了列表结构作为容器， :ref:`LLEN` 用于对访问次数进行检查，一个事务包裹着 :ref:`RPUSH` 和 :ref:`EXPIRE` 两个命令，用于在第一次执行计数时创建列表，并正确设置地设置过期时间，最后， :ref:`RPUSHX` 在后续的计数操作中进行增加操作。

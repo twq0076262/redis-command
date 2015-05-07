@@ -18,8 +18,7 @@
 **返回值:**
     保存到 ``destination`` 的结果集的基数。
 
-::
-    
+```
     redis > ZADD mid_test 70 "Li Lei"
     (integer) 1
     redis > ZADD mid_test 70 "Han Meimei"
@@ -44,3 +43,4 @@
     4) "158"
     5) "Tom"
     6) "199"
+```

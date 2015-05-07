@@ -15,10 +15,10 @@
 **时间复杂度：**
     根据脚本的复杂度而定。
 
-::
-
+```
     redis> SCRIPT LOAD "return 'hello moto'"
     "232fd51614574cf0867b83d384a5e898cfd24e5a"
 
     redis> EVALSHA "232fd51614574cf0867b83d384a5e898cfd24e5a" 0
     "hello moto"
+```

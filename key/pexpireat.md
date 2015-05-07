@@ -15,8 +15,7 @@
     | 如果生存时间设置成功，返回 ``1`` 。
     | 当 ``key`` 不存在或没办法设置生存时间时，返回 ``0`` 。(查看 :doc:`expire` 命令获取更多信息)
 
-::
-
+```
     redis> SET mykey "Hello"
     OK
 
@@ -28,3 +27,4 @@
 
     redis> PTTL mykey          # PTTL 返回毫秒
     (integer) 223157079318
+```

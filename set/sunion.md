@@ -16,8 +16,7 @@
 **返回值:**
     并集成员的列表。
 
-::
-
+```
     redis> SMEMBERS songs
     1) "Billie Jean"
 
@@ -27,3 +26,4 @@
     redis> SUNION songs my_songs
     1) "Billie Jean"
     2) "Believe Me"
+```

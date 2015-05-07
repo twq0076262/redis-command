@@ -19,8 +19,7 @@
 **返回值：**
     操作成功返回 ``ok`` ，否则返回错误信息。
 
-::
-
+```
     # 对空列表(key 不存在)进行 LSET
 
     redis> EXISTS list
@@ -52,3 +51,4 @@
 
     redis> LSET list 3 'out of range'
     (error) ERR index out of range
+```

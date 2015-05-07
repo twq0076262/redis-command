@@ -26,8 +26,7 @@
 **返回值：**
     被 `SETRANGE`_ 修改之后，字符串的长度。
 
-::
-
+```
     # 对非空字符串进行 SETRANGE
 
     redis> SET greeting "hello world" 
@@ -50,8 +49,9 @@
 
     redis> GET empty_string                   # 空白处被"\x00"填充
     "\x00\x00\x00\x00\x00Redis!"
+```
 
-模式
--------
+## 模式
+
 
 因为有了 `SETRANGE`_ 和 :ref:`GETRANGE` 命令，你可以将 Redis 字符串用作具有O(1)随机访问时间的线性数组，这在很多真实用例中都是非常快速且高效的储存方式，具体请参考 :ref:`APPEND` 命令的『模式：时间序列』部分。

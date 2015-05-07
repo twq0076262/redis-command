@@ -14,8 +14,7 @@
 **返回值：**
     若 ``key`` 存在，返回 ``1`` ，否则返回 ``0`` 。
 
-::
-
+```
     redis> SET db "redis"
     OK
 
@@ -27,3 +26,4 @@
 
     redis> EXISTS db
     (integer) 0
+```

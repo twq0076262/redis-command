@@ -16,7 +16,7 @@
 **返回值：**
     总是返回 ``OK``
 
-::
-
+```
     redis> SCRIPT FLUSH
     OK
+```

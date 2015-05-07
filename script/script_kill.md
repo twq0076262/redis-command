@@ -22,8 +22,7 @@
 **返回值：**
     执行成功返回 ``OK`` ，否则返回一个错误。
 
-::
-    
+```
     # 没有脚本在执行时
 
     redis> SCRIPT KILL
@@ -40,12 +39,12 @@
     redis> SCRIPT KILL
     (error) ERR Sorry the script already executed write commands against the dataset. You can either wait the script termination or kill the server in an hard way using the SHUTDOWN NOSAVE command.
     (1.69s)
+```
 
 以下是脚本被杀死之后，返回给执行脚本的客户端的错误：
 
-::
-
+```
     redis> EVAL "while true do end" 0
     (error) ERR Error running script (call to f_694a5fe1ddb97a4c6a1bf299d9537c7d3d0f84e7): Script killed by user with SCRIPT KILL... 
     (5.00s)
-
+```

@@ -19,8 +19,7 @@
     被成功移除的成员的数量，不包括被忽略的成员。
 
 
-::
-
+```
     # 测试数据
 
     redis> ZRANGE page_rank 0 -1 WITHSCORES
@@ -57,3 +56,4 @@
 
     redis> ZREM page_rank non-exists-element
     (integer) 0
+```

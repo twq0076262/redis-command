@@ -15,8 +15,7 @@
     | 集合的基数。
     | 当 ``key`` 不存在时，返回 ``0`` 。
 
-::
-
+```
     redis> SADD tool pc printer phone
     (integer) 3
 
@@ -28,3 +27,4 @@
 
     redis> SCARD tool   # 空集合
     (integer) 0
+```

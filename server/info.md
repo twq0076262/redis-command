@@ -148,7 +148,6 @@
 
 当不带参数直接调用 `INFO`_ 命令时，使用 ``default`` 作为默认参数。
 
-.. note::
 
     不同版本的 Redis 可能对返回的一些域进行了增加或删减。
 
@@ -163,8 +162,7 @@
 **返回值：**
     具体请参见下面的测试代码。
 
-::
-
+```
     redis> INFO
     # Server
     redis_version:2.9.11
@@ -254,3 +252,4 @@
 
     # Keyspace
     db0:keys=2,expires=0,avg_ttl=0
+```

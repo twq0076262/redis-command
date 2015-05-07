@@ -19,8 +19,7 @@
     | 当 ``key`` 不存在时，返回 ``nil`` ，否则，返回 ``key`` 的值。
     | 如果 ``key`` 不是字符串类型，那么返回一个错误。
 
-::
-
+```
     # 对不存在的 key 或字符串类型 key 进行 GET
 
     redis> GET db
@@ -43,3 +42,4 @@
 
     redis> GET db
     (error) ERR Operation against a key holding the wrong kind of value
+```

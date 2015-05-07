@@ -15,13 +15,13 @@
 
 上面这几段长长的说明可以用一个简单的例子来概括：
 
-::
-
+```
     > eval "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" 2 key1 key2 first second
     1) "key1"
     2) "key2"
     3) "first"
     4) "second"
+```
 
 其中 ``"return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}"`` 是被求值的 Lua 脚本，数字 ``2`` 指定了键名参数的数量， ``key1`` 和 ``key2`` 是键名参数，分别使用 ``KEYS[1]`` 和 ``KEYS[2]`` 访问，而最后的 ``first`` 和 ``second`` 则是附加参数，可以通过 ``ARGV[1]`` 和 ``ARGV[2]`` 访问它们。
 
@@ -34,25 +34,24 @@
 
 ``redis.call()`` 和 ``redis.pcall()`` 两个函数的参数可以是任何格式良好(well formed)的 Redis 命令：
 
-::
-
+```
     > eval "return redis.call('set','foo','bar')" 0
     OK
+```
 
 需要注意的是，上面这段脚本的确实现了将键 ``foo`` 的值设为 ``bar`` 的目的，但是，它违反了  `EVAL`_ 命令的语义，因为脚本里使用的所有键都应该由 ``KEYS`` 数组来传递，就像这样：
 
-::
-
+```
     > eval "return redis.call('set',KEYS[1],'bar')" 1 foo
     OK
+```
 
 要求使用正确的形式来传递键(key)是有原因的，因为不仅仅是 `EVAL`_ 这个命令，所有的 Redis 命令，在执行之前都会被分析，籍此来确定命令会对哪些键进行操作。
 
 因此，对于 `EVAL`_ 命令来说，必须使用正确的形式来传递键，才能确保分析工作正确地执行。除此之外，使用正确的形式来传递键还有很多其他好处，它的一个特别重要的用途就是确保 Redis 集群可以将你的请求发送到正确的集群节点。(对 Redis 集群的工作还在进行当中，但是脚本功能被设计成可以与集群功能保持兼容。)不过，这条规矩并不是强制性的，从而使得用户有机会滥用(abuse) Redis 单实例配置(single instance configuration)，代价是这样写出的脚本不能被 Redis 集群所兼容。
 
 
-在 Lua 数据类型和 Redis 数据类型之间转换
-------------------------------------------------
+## 在 Lua 数据类型和 Redis 数据类型之间转换
 
 当 Lua 通过 ``call()`` 或 ``pcall()`` 函数执行 Redis 命令的时候，命令的返回值会被转换成 Lua 数据结构。同样地，当 Lua 脚本在 Redis 内置的解释器里运行时，Lua 脚本的返回值也会被转换成 Redis 协议(protocol)，然后由 `EVAL`_ 将值返回给客户端。
 
@@ -86,8 +85,7 @@
 
 以下是几个类型转换的例子：
 
-::
-
+```
     > eval "return 10" 0
     (integer) 10
 
@@ -99,42 +97,40 @@
 
     > eval "return redis.call('get','foo')" 0
     "bar"
+```
 
 在上面的三个代码示例里，前两个演示了如何将 Lua 值转换成 Redis 值，最后一个例子更复杂一些，它演示了一个将 Redis 值转换成 Lua 值，然后再将 Lua 值转换成 Redis 值的类型转过程。
 
 
-脚本的原子性
-------------------
+## 脚本的原子性
 
 Redis 使用单个 Lua 解释器去运行所有脚本，并且， Redis 也保证脚本会以原子性(atomic)的方式执行：当某个脚本正在运行的时候，不会有其他脚本或 Redis 命令被执行。这和使用 :ref:`MULTI` / :ref:`EXEC` 包围的事务很类似。在其他别的客户端看来，脚本的效果(effect)要么是不可见的(not visible)，要么就是已完成的(already completed)。
 
 另一方面，这也意味着，执行一个运行缓慢的脚本并不是一个好主意。写一个跑得很快很顺溜的脚本并不难，因为脚本的运行开销(overhead)非常少，但是当你不得不使用一些跑得比较慢的脚本时，请小心，因为当这些蜗牛脚本在慢吞吞地运行的时候，其他客户端会因为服务器正忙而无法执行命令。
 
 
-错误处理
-------------
+## 错误处理
 
 前面的命令介绍部分说过， ``redis.call()`` 和 ``redis.pcall()`` 的唯一区别在于它们对错误处理的不同。
 
 当 ``redis.call()`` 在执行命令的过程中发生错误时，脚本会停止执行，并返回一个脚本错误，错误的输出信息会说明错误造成的原因：
 
-::
-
+```
     redis> lpush foo a
     (integer) 1
 
     redis> eval "return redis.call('get', 'foo')" 0
     (error) ERR Error running script (call to f_282297a0228f48cd3fc6a55de6316f31422f5d17): ERR Operation against a key holding the wrong kind of value 
+```
 
 和 ``redis.call()`` 不同， ``redis.pcall()`` 出错时并不引发(raise)错误，而是返回一个带 ``err`` 域的 Lua 表(table)，用于表示错误：
 
-::
-
+```
     redis 127.0.0.1:6379> EVAL "return redis.pcall('get', 'foo')" 0
     (error) ERR Operation against a key holding the wrong kind of value
+```
 
-带宽和 EVALSHA
--------------------
+## 带宽和 EVALSHA
 
 `EVAL`_ 命令要求你在每次执行脚本的时候都发送一次脚本主体(script body)。Redis 有一个内部的缓存机制，因此它不会每次都重新编译脚本，不过在很多场合，付出无谓的带宽来传送脚本主体并不是最佳选择。
 
@@ -147,8 +143,7 @@ EVALSHA 命令的表现如下：
 
 以下是示例：
 
-::
-
+```
     > set foo bar
     OK
 
@@ -160,14 +155,14 @@ EVALSHA 命令的表现如下：
 
     > evalsha ffffffffffffffffffffffffffffffffffffffff 0
     (error) `NOSCRIPT` No matching script. Please use [EVAL](/commands/eval).
+```
 
 客户端库的底层实现可以一直乐观地使用 EVALSHA 来代替 `EVAL`_ ，并期望着要使用的脚本已经保存在服务器上了，只有当 ``NOSCRIPT`` 错误发生时，才使用 `EVAL`_ 命令重新发送脚本，这样就可以最大限度地节省带宽。
 
 这也说明了执行 `EVAL`_ 命令时，使用正确的格式来传递键名参数和附加参数的重要性：因为如果将参数硬写在脚本中，那么每次当参数改变的时候，都要重新发送脚本，即使脚本的主体并没有改变，相反，通过使用正确的格式来传递键名参数和附加参数，就可以在脚本主体不变的情况下，直接使用 EVALSHA 命令对脚本进行复用，免去了无谓的带宽消耗。
 
 
-脚本缓存
---------------
+## 脚本缓存
 
 Redis 保证所有被运行过的脚本都会被永久保存在脚本缓存当中，这意味着，当 `EVAL`_ 命令在一个 Redis 实例上成功执行某个脚本之后，随后针对这个脚本的所有 EVALSHA 命令都会成功执行。
 
@@ -178,8 +173,7 @@ Redis 保证所有被运行过的脚本都会被永久保存在脚本缓存当�
 事实上，用户会发现 Redis 不移除缓存中的脚本实际上是一个好主意。比如说，对于一个和 Redis 保持持久化链接(persistent connection)的程序来说，它可以确信，执行过一次的脚本会一直保留在内存当中，因此它可以在流水线中使用 EVALSHA 命令而不必担心因为找不到所需的脚本而产生错误(稍候我们会看到在流水线中执行脚本的相关问题)。
 
 
-SCRIPT 命令
------------------
+## SCRIPT 命令
 
 Redis 提供了以下几个 SCRIPT 命令，用于对脚本子系统(scripting subsystem)进行控制：
 
@@ -189,8 +183,7 @@ Redis 提供了以下几个 SCRIPT 命令，用于对脚本子系统(scripting s
 - :ref:`script_kill` ：杀死当前正在运行的脚本
 
 
-纯函数脚本
-----------------
+## 纯函数脚本
 
 在编写脚本方面，一个重要的要求就是，脚本应该被写成纯函数(pure function)。
 
@@ -214,8 +207,7 @@ Redis 提供了以下几个 SCRIPT 命令，用于对脚本子系统(scripting s
 
 假设现在我们要编写一个 Redis 脚本，这个脚本从列表中弹出 N 个随机数。一个 Ruby 写的例子如下：
 
-::
-
+```
     require 'rubygems'
     require 'redis'
 
@@ -233,11 +225,11 @@ Redis 提供了以下几个 SCRIPT 命令，用于对脚本子系统(scripting s
 
     r.del(:mylist)
     puts r.eval(RandomPushScript,[:mylist],[10,rand(2**32)])
+```
 
 这个程序每次运行都会生成带有以下元素的列表：
 
-::
-
+```
     > lrange mylist 0 -1
     1) "0.74509509873814"
     2) "0.87390407681181"
@@ -249,6 +241,7 @@ Redis 提供了以下几个 SCRIPT 命令，用于对脚本子系统(scripting s
     8) "0.09637165539729"
     9) "0.74990198051087"
     10) "0.17082803611217"
+```
 
 上面的 Ruby 程序每次都只生成同样的列表，用途并不是太大。那么，该怎样修改这个脚本，使得它仍然是一个纯函数(符合 Redis 的要求)，但是每次调用都可以产生不同的随机元素呢？
 
@@ -256,8 +249,7 @@ Redis 提供了以下几个 SCRIPT 命令，用于对脚本子系统(scripting s
 
 以下是修改后的脚本：
 
-::
-
+```
     RandomPushScript = <<EOF
         local i = tonumber(ARGV[1])
         local res
@@ -271,6 +263,7 @@ Redis 提供了以下几个 SCRIPT 命令，用于对脚本子系统(scripting s
 
     r.del(:mylist)
     puts r.eval(RandomPushScript,1,:mylist,10,rand(2**32))
+```
 
 尽管对于同样的 seed ，上面的脚本产生的列表元素是一样的(因为它是一个纯函数)，但是只要每次在执行脚本的时候传入不同的 seed ，我们就可以得到带有不同随机元素的列表。
 
@@ -279,17 +272,16 @@ Seed 会在复制(replication link)和写 AOF 文件时作为一个参数来传�
 注意，Redis 实现保证 ``math.random`` 和 ``math.randomseed`` 的输出和运行 Redis 的系统架构无关，无论是 32 位还是 64 位系统，无论是小端(little endian)还是大端(big endian)系统，这两个函数的输出总是相同的。
 
 
-全局变量保护
----------------
+## 全局变量保护
 
 为了防止不必要的数据泄漏进 Lua 环境， Redis 脚本不允许创建全局变量。如果一个脚本需要在多次执行之间维持某种状态，它应该使用 Redis key 来进行状态保存。
 
 企图在脚本中访问一个全局变量(不论这个变量是否存在)将引起脚本停止， `EVAL`_ 命令会返回一个错误：
 
-::
-
+```
     redis 127.0.0.1:6379> eval 'a=10' 0
     (error) ERR Error running script (call to f_933044db579a2f8fd45d8065f04a8d0249383e57): user_script:1: Script attempted to create global variable 'a'
+```
 
 Lua 的 debug 工具，或者其他设施，比如打印（alter）用于实现全局保护的 meta table ，都可以用于实现全局变量保护。
 
@@ -298,8 +290,7 @@ Lua 的 debug 工具，或者其他设施，比如打印（alter）用于实现�
 避免引入全局变量的一个诀窍是：将脚本中用到的所有变量都使用 ``local`` 关键字定义为局部变量。
     
 
-库
--------
+## 库
 
 Redis 内置的 Lua 解释器加载了以下 Lua 库：
 
@@ -311,13 +302,13 @@ Redis 内置的 Lua 解释器加载了以下 Lua 库：
 - ``cjson``
 - ``cmsgpack``
 
+
 其中 ``cjson`` 库可以让 Lua 以非常快的速度处理 JSON 数据，除此之外，其他别的都是 Lua 的标准库。
 
 每个 Redis 实例都保证会加载上面列举的库，从而确保每个 Redis 脚本的运行环境都是相同的。
 
 
-使用脚本散发 Redis 日志
--------------------------------
+## 使用脚本散发 Redis 日志
 
 在 Lua 脚本中，可以通过调用 ``redis.log`` 函数来写 Redis 日志(log)：
 
@@ -343,8 +334,7 @@ Redis 内置的 Lua 解释器加载了以下 Lua 库：
 ``[32343] 22 Mar 15:21:39 # Something is wrong with this script.``
 
 
-沙箱(sandbox)和最大执行时间
-----------------------------------
+## 沙箱(sandbox)和最大执行时间
 
 脚本应该仅仅用于传递参数和对 Redis 数据进行处理，它不应该尝试去访问外部系统(比如文件系统)，或者执行任何系统调用。
 
@@ -362,8 +352,7 @@ Redis 内置的 Lua 解释器加载了以下 Lua 库：
 - 如果脚本已经执行过写命令，那么唯一允许执行的操作就是 ``SHUTDOWN NOSAVE`` ，它通过停止服务器来阻止当前数据集写入磁盘
 
 
-流水线(pipeline)上下文(context)中的 EVALSHA
-----------------------------------------------
+## 流水线(pipeline)上下文(context)中的 EVALSHA
 
 在流水线请求的上下文中使用 EVALSHA 命令时，要特别小心，因为在流水线中，必须保证命令的执行顺序。
 

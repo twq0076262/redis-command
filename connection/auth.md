@@ -22,8 +22,7 @@
 **返回值：**
     密码匹配时返回 ``OK`` ，否则返回一个错误。  
 
-::
-
+```
     # 设置密码
 
     redis> CONFIG SET requirepass secret_password   # 将密码设置为 secret_password
@@ -57,3 +56,4 @@
 
     redis> PING                        # 执行命令不再需要密码，清空密码操作成功
     PONG
+```

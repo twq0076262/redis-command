@@ -20,8 +20,7 @@
 **返回值:**
     被添加到集合中的新元素的数量，不包括被忽略的元素。
 
-::
-
+```
     # 添加单个元素
 
     redis> SADD bbs "discuz.net"
@@ -43,3 +42,4 @@
     1) "discuz.net"
     2) "groups.google.com"
     3) "tianya.cn"
+```

@@ -38,8 +38,7 @@
     | 如果设置了 ``NX`` 或者 ``XX`` ，但因为条件没达到而造成设置操作未执行，那么命令返回空批量回复（NULL Bulk Reply）。
 
 
-::
-
+```
     # 对不存在的键进行设置
 
     redis 127.0.0.1:6379> SET key "value"
@@ -152,12 +151,11 @@
 
     redis 127.0.0.1:6379> TTL another-key
     (integer) 997   # 这是 EX 参数设置的值
+```
 
 
 
-
-使用模式
----------------
+## 使用模式
 
 命令 ``SET resource-name anystring NX EX max-lock-time`` 是一种在 Redis 中实现锁的简单方法。
 
@@ -179,13 +177,14 @@
 
 以下是一个简单的解锁脚本示例：
 
-.. code-block:: lua
 
+```
     if redis.call("get",KEYS[1]) == ARGV[1]
     then
         return redis.call("del",KEYS[1])
     else
         return 0
     end
+```
 
 这个脚本可以通过 ``EVAL ...script... 1 resource-name token-value`` 命令来调用。

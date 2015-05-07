@@ -20,15 +20,15 @@
 
 举个例子：
 
-:: 
-
+```
     ZRANGEBYSCORE zset (1 5
+```
 
 返回所有符合条件 ``1 < score <= 5`` 的成员，而
 
-::
-
+```
     ZRANGEBYSCORE zset (5 (10
+```
 
 则返回所有符合条件 ``5 < score < 10`` 的成员。
 
@@ -41,8 +41,7 @@
 **返回值:**
     指定区间内，带有 ``score`` 值(可选)的有序集成员的列表。
 
-::
-
+```
     redis> ZADD salary 2500 jack                        # 测试数据
     (integer) 0
     redis> ZADD salary 5000 tom
@@ -71,3 +70,4 @@
 
     redis> ZRANGEBYSCORE salary (5000 400000            # 显示工资大于 5000 小于等于 400000 的成员
     1) "peter"
+```

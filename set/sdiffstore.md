@@ -18,8 +18,7 @@
 **返回值:**
     结果集中的元素数量。
 
-::
-
+```
     redis> SMEMBERS joe's_movies
     1) "hi, lady"
     2) "Fast Five"
@@ -36,3 +35,4 @@
     redis> SMEMBERS joe_diff_peter
     1) "hi, lady"
     2) "Fast Five"
+```

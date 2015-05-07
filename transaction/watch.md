@@ -14,7 +14,7 @@
 **返回值：**
     总是返回 ``OK`` 。
 
-::
-
+```
     redis> WATCH lock lock_times
     OK
+```

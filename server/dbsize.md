@@ -14,8 +14,7 @@
 **返回值：**
     当前数据库的 key 的数量。
 
-::
-
+```
     redis> DBSIZE
     (integer) 5
 
@@ -24,3 +23,4 @@
 
     redis> DBSIZE
     (integer) 6
+```

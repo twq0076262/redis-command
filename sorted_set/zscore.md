@@ -16,8 +16,7 @@
 **返回值:**
     ``member`` 成员的 ``score`` 值，以字符串形式表示。
 
-::
-    
+```
     redis> ZRANGE salary 0 -1 WITHSCORES    # 测试数据
     1) "tom"
     2) "2000"
@@ -28,3 +27,4 @@
 
     redis> ZSCORE salary peter              # 注意返回值是字符串
     "3500"
+```

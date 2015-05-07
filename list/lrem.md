@@ -21,8 +21,7 @@
     | 被移除元素的数量。
     | 因为不存在的 ``key`` 被视作空表(empty list)，所以当 ``key`` 不存在时， `LREM`_ 命令总是返回 ``0`` 。
 
-:: 
-
+```
     # 先创建一个表，内容排列是
     # morning hello morning helllo morning
 
@@ -70,3 +69,4 @@
 
     redis> LLEN greet
     (integer) 0
+```

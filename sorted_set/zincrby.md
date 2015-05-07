@@ -22,10 +22,10 @@
 **返回值:**
     ``member`` 成员的新 ``score`` 值，以字符串形式表示。
 
-::
-
+```
     redis> ZSCORE salary tom 
     "2000"
 
     redis> ZINCRBY salary 2000 tom   # tom 加薪啦！
     "4000"
+```

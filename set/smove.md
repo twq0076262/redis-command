@@ -23,8 +23,7 @@
     | 如果 ``member`` 元素被成功移除，返回 ``1`` 。
     | 如果 ``member`` 元素不是 ``source`` 集合的成员，并且没有任何操作对 ``destination`` 集合执行，那么返回 ``0`` 。
 
-::
-
+```
     redis> SMEMBERS songs
     1) "Billie Jean"
     2) "Believe Me"
@@ -40,3 +39,4 @@
 
     redis> SMEMBERS my_songs
     1) "Believe Me"
+```

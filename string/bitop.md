@@ -34,8 +34,7 @@
 
 .. note:: `BITOP`_ 的复杂度为 O(N) ，当处理大型矩阵(matrix)或者进行大数据量的统计时，最好将任务指派到附属节点(slave)进行，避免阻塞主节点。
 
-::
-
+```
     redis> SETBIT bits-1 0 1        # bits-1 = 1001
     (integer) 0
 
@@ -65,3 +64,4 @@
 
     redis> GETBIT and-result 3
     (integer) 1
+```

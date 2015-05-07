@@ -15,8 +15,7 @@
     | 一个包含哈希表中所有域的表。
     | 当 ``key`` 不存在时，返回一个空表。
 
-::
-
+```
     # 哈希表非空
 
     redis> HMSET website google www.google.com yahoo www.yahoo.com 
@@ -34,3 +33,4 @@
 
     redis> HKEYS fake_key 
     (empty list or set)
+```

@@ -21,8 +21,8 @@
 
 `BLPOP`_ 保证返回的元素来自 ``command`` ，因为它是按"查找 ``job``  -> 查找 ``command``  -> 查找 ``request`` "这样的顺序，第一个找到的非空列表。
 
-::
 
+```
     redis> DEL job command request           # 确保key都被删除
     (integer) 0
 
@@ -35,6 +35,7 @@
     redis> BLPOP job command request 0       # job 列表为空，被跳过，紧接着 command 列表的第一个元素被弹出。
     1) "command"                             # 弹出元素所属的列表
     2) "update system..."                    # 弹出元素所属的值
+```
 
 **阻塞行为**
 
@@ -42,8 +43,7 @@
 
 超时参数 ``timeout`` 接受一个以秒为单位的数字作为值。超时参数设为 ``0`` 表示阻塞时间可以无限期延长(block indefinitely) 。
 
-::
-
+```
     redis> EXISTS job                # 确保两个 key 都不存在
     (integer) 0
     redis> EXISTS command
@@ -57,6 +57,7 @@
     redis> BLPOP job command 5       # 等待超时的情况
     (nil)
     (5.66s)                          # 等待的秒数
+```
 
 **相同的key被多个客户端同时阻塞**
 
@@ -70,8 +71,7 @@
 
 因此，一个被包裹在 :ref:`multi` / :ref:`exec` 块内的 `BLPOP`_ 命令，行为表现得就像 :ref:`LPOP` 一样，对空列表返回 ``nil`` ，对非空列表弹出列表元素，不进行任何阻塞操作。
 
-::
-
+```
     # 对非空列表进行操作
 
     redis> RPUSH job programming
@@ -101,6 +101,7 @@
 
     redis> EXEC         # 不阻塞，立即返回
     1) (nil)
+```
 
 **可用版本：**  
     >= 2.0.0
@@ -112,8 +113,7 @@
     | 如果列表为空，返回一个 ``nil`` 。
     | 否则，返回一个含有两个元素的列表，第一个元素是被弹出元素所属的 ``key`` ，第二个元素是被弹出元素的值。
 
-模式：事件提醒
-------------------
+## 模式：事件提醒
 
 有时候，为了等待一个新元素到达数据中，需要使用轮询的方式对数据进行探查。
 
@@ -123,20 +123,20 @@
 
 使用元素的客户端(消费者)可以执行类似以下的代码：
 
-::
-
+```
     LOOP forever
         WHILE SPOP(key) returns elements
             ... process elements ...
         END
         BRPOP helper_key
     END
+```
 
 添加元素的客户端(消费者)则执行以下代码：
 
-::
-
+```
     MULTI
         SADD key element
         LPUSH helper_key x
     EXEC
+```

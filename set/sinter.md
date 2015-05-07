@@ -18,8 +18,7 @@
 **返回值:**
     交集成员的列表。
 
-::
-
+```
     redis> SMEMBERS group_1
     1) "LI LEI"
     2) "TOM"
@@ -31,3 +30,4 @@
 
     redis> SINTER group_1 group_2
     1) "JACK"
+```

@@ -16,8 +16,7 @@
 **返回值：**
      `LPUSHX`_ 命令执行之后，表的长度。
 
-::
-
+```
     # 对空列表执行 LPUSHX
 
     redis> LLEN greet                       # greet 是一个空列表
@@ -38,3 +37,4 @@
     redis> LRANGE greet 0 -1
     1) "good morning"
     2) "hello"
+```

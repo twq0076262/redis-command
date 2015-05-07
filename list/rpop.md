@@ -15,8 +15,7 @@
     | 列表的尾元素。
     | 当 ``key`` 不存在时，返回 ``nil`` 。
 
-::
-
+```
     redis> RPUSH mylist "one" 
     (integer) 1
 
@@ -32,3 +31,4 @@
     redis> LRANGE mylist 0 -1    # 列表剩下的元素 
     1) "one"
     2) "two"
+```
