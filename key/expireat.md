@@ -3,7 +3,7 @@
 
 **EXPIREAT key timestamp**
 
-`EXPIREAT`_ 的作用和 :doc:`expire` 类似，都用于为 ``key`` 设置生存时间。
+`EXPIREAT`_ 的作用和 `expire` 类似，都用于为 ``key`` 设置生存时间。
 
 不同在于 `EXPIREAT`_ 命令接受的时间参数是 UNIX 时间戳(unix timestamp)。
 

@@ -3,7 +3,7 @@
 
 **PEXPIREAT key milliseconds-timestamp**
 
-这个命令和 :doc:`expireat` 命令类似，但它以毫秒为单位设置 ``key`` 的过期 unix 时间戳，而不是像 :doc:`expireat` 那样，以秒为单位。
+这个命令和 `expireat` 命令类似，但它以毫秒为单位设置 ``key`` 的过期 unix 时间戳，而不是像 `expireat` 那样，以秒为单位。
 
 **可用版本：**
     >= 2.6.0
@@ -13,7 +13,7 @@
 
 **返回值：**
     | 如果生存时间设置成功，返回 ``1`` 。
-    | 当 ``key`` 不存在或没办法设置生存时间时，返回 ``0`` 。(查看 :doc:`expire` 命令获取更多信息)
+    | 当 ``key`` 不存在或没办法设置生存时间时，返回 ``0`` 。(查看 `expire` 命令获取更多信息)
 
 ```
     redis> SET mykey "Hello"
